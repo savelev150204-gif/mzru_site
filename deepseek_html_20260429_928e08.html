@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Мария Бровкина | Контент-ментор для бьюти-мастеров</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEFAF5;
+            color: #2C2C2C;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            border-bottom: 1px solid #F0E5D8;
+            position: sticky;
+            top: 0;
+            background: #FEFAF5;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2C2C2C;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            color: #8B7A6B;
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #2C2C2C;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #B28B6E;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2C2C2C;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-light {
+            background-color: #F0E5D8;
+            color: #2C2C2C;
+        }
+
+        .btn-light:hover {
+            background-color: #E3D5C4;
+        }
+
+        .btn:hover {
+            background-color: #B28B6E;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 60px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #5A4A3A;
+            margin-bottom: 24px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .hero-image {
+            background: linear-gradient(145deg, #F0E5D8, #E8D9CC);
+            border-radius: 32px;
+            padding: 40px;
+            text-align: center;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-image-placeholder {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        /* Section */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-dark {
+            background-color: #F7F0E8;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #6B5A4A;
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #F0E5D8;
+        }
+
+        .problem-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        /* Tariffs */
+        .tariffs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .tariff-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            border: 1px solid #F0E5D8;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tariff-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        .tariff-popular {
+            border-top: 4px solid #B28B6E;
+            position: relative;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: #B28B6E;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tariff-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .tariff-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 20px 0 8px;
+        }
+
+        .tariff-price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #8B7A6B;
+        }
+
+        .tariff-desc {
+            color: #6B5A4A;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #F0E5D8;
+            padding-bottom: 16px;
+        }
+
+        .tariff-features {
+            list-style: none;
+            margin: 24px 0;
+        }
+
+        .tariff-features li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check {
+            color: #B28B6E;
+            font-weight: bold;
+        }
+
+        .btn-block {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Content table */
+        .content-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 16px 12px;
+            text-align: left;
+            border-bottom: 1px solid #F0E5D8;
+        }
+
+        .content-table th {
+            background-color: #F7F0E8;
+            font-weight: 600;
+        }
+
+        .content-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Steps */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            text-align: center;
+        }
+
+        .step {
+            background: white;
+            padding: 24px;
+            border-radius: 24px;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: #2C2C2C;
+            color: white;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 0 auto 16px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+            border: 1px solid #F0E5D8;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .faq-answer {
+            color: #6B5A4A;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2C2C2C;
+            color: #D4C5B5;
+            padding: 48px 0 24px;
+            margin-top: 40px;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .footer a {
+            color: #D4C5B5;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 24px;
+            border-top: 1px solid #4A3D30;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .header-inner {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header-inner">
+            <div class="logo">
+                <h1>Мария Бровкина</h1>
+                <p>Контент-ментор для бьюти-мастеров</p>
+            </div>
+            <div class="nav">
+                <a href="#tariffs">Тарифы</a>
+                <a href="#forwhom">Кому подходит</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-title">Ты крутой мастер.<br>Instagram просто этого не знает.</div>
+                    <div class="hero-subtitle">Бровисты, лэшмейкеры, маникюрши, визажисты, косметологи — я помогу упаковать профиль и начать получать заявки из блога. Без выгорания. С системой.</div>
+                    <div class="hero-buttons">
+                        <a href="#tariffs" class="btn">Выбрать тариф</a>
+                        <a href="#" class="btn btn-light">Бесплатный чек-лист</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-placeholder">📸 ✨</div>
+                    <div style="font-weight: 500; margin-bottom: 8px;">Мария Бровкина</div>
+                    <div style="font-size: 0.85rem; color: #5A4A3A;">Мастер бровист · Контент-ментор</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проблемы -->
+    <section class="section section-dark" id="forwhom">
+        <div class="container">
+            <div class="section-title">Знакомо?</div>
+            <div class="section-subtitle">Три симптома, что пора что-то менять</div>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-emoji">📉</div>
+                    <h3>0 заявок из блога</h3>
+                    <p>Сторис смотрят 50 человек, новые клиенты — только по сарафану</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-emoji">😶</div>
+                    <h3>Творческий ступор</h3>
+                    <p>Открываешь Instagram и не знаешь, что снимать. Идеи кончаются на второй неделе</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-emoji">🫣</div>
+                    <h3>Профиль выглядит дёшево</h3>
+                    <p>Шапка не продаёт, фото тёмные, подписчики не доверяют</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кто я -->
+    <section class="section">
+        <div class="container">
+            <div class="hero-grid" style="grid-template-columns: 1fr 1.5fr;">
+                <div class="hero-image" style="background: #E8D9CC;">
+                    <div class="hero-image-placeholder">👩‍🎨</div>
+                    <div><strong>Мария Бровкина</strong></div>
+                    <div style="font-size: 0.8rem;">стаж 5+ лет · 60+ учеников</div>
+                </div>
+                <div>
+                    <div class="section-title" style="text-align: left;">Привет, я Мария</div>
+                    <p style="margin-bottom: 16px; font-size: 1.05rem;">✔️ Мастер бровист с 5-летним стажем<br>✔️ Обучила 60+ бьюти-мастеров (бровисты, лэшмейкеры, маникюрши)<br>✔️ Сама прошла путь от 0 подписчиков до стабильных заявок из блога<br>✔️ Знаю, как страшно включать камеру и что делать, когда нет идей</p>
+                    <p style="color: #5A4A3A;">Я не даю воду. Я даю систему, которая работает.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контент-воронка (актуальная) -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-title">Сколько продающего контента ты ДЕЙСТВИТЕЛЬНО постишь?</div>
+            <div class="section-subtitle">Актуальная контент-воронка для бьюти-мастеров</div>
+            <div class="content-table-wrapper">
+                <table class="content-table">
+                    <thead>
+                        <tr><th>Тип контента</th><th>%</th><th>Для бровиста</th><th>Для маникюрши</th><th>Для косметолога</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>💰 Продажи</td><td><strong>20%</strong></td><td>«Окно на среду 12:00»</td><td>«Запись на пятницу — 2 места»</td><td>«Freeze на эту неделю»</td></tr>
+                        <tr><td>🧠 Экспертиза</td><td><strong>30%</strong></td><td>«Как подобрать форму под овал лица»</td><td>«Что такое впиленный боковой валик»</td><td>«Чистка vs пилинг»</td></tr>
+                        <tr><td>🎬 Закулисье</td><td><strong>30%</strong></td><td>Стерилизация каждого пинцета</td><td>Как я дезинфицирую стол</td><td>Как готовлю кабинет</td></tr>
+                        <tr><td>❤️ Личное</td><td><strong>20%</strong></td><td>Мой завтрак перед сменой</td><td>Боль в спине после 5 клиентов</td><td>Как я отдыхаю после сложного дня</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section class="section" id="tariffs">
+        <div class="container">
+            <div class="section-title">Три формата — выбери свой</div>
+            <div class="section-subtitle">От быстрого пинка до полного сопровождения</div>
+            <div class="tariffs-grid">
+                <!-- Тариф 1 -->
+                <div class="tariff-card">
+                    <div class="tariff-name">🚀 Экспресс-пробуждение</div>
+                    <div class="tariff-price">2 500 ₽ <small>/ 30 мин</small></div>
+                    <div class="tariff-desc">Разбор шапки + 3 идеи Reels под тебя + чек-лист 14 идей</div>
+                    <ul class="tariff-features">
+                        <li><span class="check">✅</span> Аудит шапки профиля</li>
+                        <li><span class="check">✅</span> Разбор 3 последних публикаций</li>
+                        <li><span class="check">✅</span> 3 персональные идеи для Reels</li>
+                        <li><span class="check">✅</span> Чек-лист 14 идей</li>
+                        <li><span class="check">✅</span> Запись созвона</li>
+                        <li><span class="check">✅</span> 24 часа поддержки</li>
+                    </ul>
+                    <a href="#" class="btn btn-block">Выбрать</a>
+                </div>
+
+                <!-- Тариф 2 (популярный) -->
+                <div class="tariff-card tariff-popular">
+                    <div class="popular-badge">🔥 Самый популярный</div>
+                    <div class="tariff-name">📦 Полная упаковка</div>
+                    <div class="tariff-price">6 500 ₽ <small>/ 1.5 ч + домашка</small></div>
+                    <div class="tariff-desc">Контент-план 14 дней + шапка + скрипты + 7 дней поддержки</div>
+                    <ul class="tariff-features">
+                        <li><span class="check">✅</span> Всё из Экспресса</li>
+                        <li><span class="check">✅</span> Готовая новая шапка (текст)</li>
+                        <li><span class="check">✅</span> Контент-план на 14 дней</li>
+                        <li><span class="check">✅</span> 4 скрипта для директа</li>
+                        <li><span class="check">✅</span> Схема «Идеальный Reels»</li>
+                        <li><span class="check">✅</span> 7 дней поддержки в чате</li>
+                    </ul>
+                    <a href="#" class="btn btn-block">Выбрать</a>
+                </div>
+
+                <!-- Тариф 3 -->
+                <div class="tariff-card">
+                    <div class="tariff-name">👑 Менторский месяц</div>
+                    <div class="tariff-price">20 000 ₽ <small>/ 4 недели</small></div>
+                    <div class="tariff-desc">4 созвона + поддержка + контент-план 30 дней + гарантия</div>
+                    <ul class="tariff-features">
+                        <li><span class="check">✅</span> Всё из Полной упаковки</li>
+                        <li><span class="check">✅</span> 4 созвона по 45 мин</li>
+                        <li><span class="check">✅</span> Контент-план на 30 дней</li>
+                        <li><span class="check">✅</span> Поддержка 5 дней в неделю</li>
+                        <li><span class="check">✅</span> Итоговый отчёт + стратегия</li>
+                        <li><span class="check">✅</span> Закрытый шаблон «Готовый месяц»</li>
+                        <li><span class="check">🎁</span> <strong>Гарантия: нет заявок → следующий месяц бесплатно</strong></li>
+                    </ul>
+                    <a href="#" class="btn btn-block">Выбрать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-title">Как проходит работа</div>
+            <div class="steps-grid">
+                <div class="step"><div class="step-number">1</div><h3>Оплата</h3><p>Выбираешь тариф и оплачиваешь онлайн</p></div>
+                <div class="step"><div class="step-number">2</div><h3>Диагностика</h3><p>Заполняешь гугл-форму — я узнаю твою боль</p></div>
+                <div class="step"><div class="step-number">3</div><h3>Созвон</h3><p>Разбираем профиль, даю готовые решения</p></div>
+                <div class="step"><div class="step-number">4</div><h3>Результат</h3><p>Ты внедряешь систему и получаешь заявки</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-title">Частые вопросы</div>
+            <div class="faq-item"><div class="faq-question">❓ Я не бровист, а маникюрша / косметолог / визажист. Подойдёт?</div><div class="faq-answer">Да. Все тарифы адаптированы под любую бьюти-нишу. Примеры в консультации будут под ВАС.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ У меня мало подписчиков (меньше 500). Это проблема?</div><div class="faq-answer">Нет. Мы работаем с тем, что есть. Часто малая аудитория даже удобнее для старта.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ Боюсь, что брошу через неделю. Что делать?</div><div class="faq-answer">Возьми «Менторский месяц». Я буду рядом каждый день. Плюс гарантия: если нет результата — следующий месяц бесплатно.</div></div>
+            <div class="faq-item"><div class="faq-question">❓ Можно оплатить частями?</div><div class="faq-answer">Да, для тарифа «Менторский месяц» могу разбить на 2 платежа по 10 000 ₽.</div></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: #2C2C2C; color: white; border-radius: 40px; margin: 0 24px 60px;">
+        <div class="container" style="text-align: center; padding: 48px 20px;">
+            <div style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 16px;">Готова начать?</div>
+            <div style="margin-bottom: 32px;">Напиши «РАЗБОР» в Telegram или Instagram — и я пришлю 3 идеи для Reels бесплатно</div>
+            <a href="#" class="btn" style="background: white; color: #2C2C2C; margin-right: 12px;">Telegram</a>
+            <a href="#" class="btn btn-light" style="background: #5A4A3A; color: white;">Instagram</a>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div>
+                <div style="font-family: 'Playfair Display'; font-size: 1.3rem; margin-bottom: 8px;">Мария Бровкина</div>
+                <div>Контент-ментор для бьюти-мастеров</div>
+            </div>
+            <div class="footer-links">
+                <a href="#tariffs">Тарифы</a>
+                <a href="#forwhom">Кому подходит</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </div>
+        <div class="copyright">© 2025 Мария Бровкина. Все права защищены.</div>
+    </div>
+</footer>
+
+</body>
+</html>
